@@ -13,6 +13,12 @@
         <div class = 'product-info'>
           <h1>{{product}}</h1><span v-show="onSale">Sale!!</span>
           <p>{{description}}</p>
+          <ul>
+            <li v-for='detail in details'>{{detail}}</li>
+          </ul>
+          <ul class='sizes'>
+            <li v-for='size in sizes'>{{size}}</li>
+          </ul>
           <p v-if='inventory>10'>In Stock</p>
           <p v-else-if='inventory>0'>Almost Out of Stock</p>
           <p v-else>Out of Stock</p>
@@ -28,7 +34,9 @@
           image: 'assets/vmSocks-green.png',
           altText: 'A pair of socks',
           inventory: 11,
-          onSale: true
+          onSale: true,
+          details: ['80% cotton','20% polyester', '100% nerd', 'Gender-neutral'],
+          sizes: ['S','M','L']
         }
       })
     </script>
