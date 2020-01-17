@@ -8,7 +8,7 @@
     <div id ='app'>
       <div class = 'product'>
         <div class = 'product-image'>
-          <img src='{{image}}' />
+          <img :src='image' v-bind:alt='altText' />
         </div>
         <div class = 'product-info'>
           <h1>{{product}}</h1>
@@ -22,7 +22,8 @@
         data: {
           product: 'Socks',
           description: 'A pair of warm, fuzzy socks',
-          image: 'assets/vmSocks-green.png'
+          image: 'assets/vmSocks-green.png',
+          altText: 'A pair of socks',
         }
       })
     </script>
