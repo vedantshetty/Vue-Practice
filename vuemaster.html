@@ -11,8 +11,11 @@
           <img :src='image' v-bind:alt='altText' />
         </div>
         <div class = 'product-info'>
-          <h1>{{product}}</h1>
+          <h1>{{product}}</h1><span v-show="onSale">Sale!!</span>
           <p>{{description}}</p>
+          <p v-if='inventory>10'>In Stock</p>
+          <p v-else-if='inventory>0'>Almost Out of Stock</p>
+          <p v-else>Out of Stock</p>
         </div>
     </div>
     <script src = 'https://cdn.jsdelivr.net/npm/vue'></script>
@@ -24,6 +27,8 @@
           description: 'A pair of warm, fuzzy socks',
           image: 'assets/vmSocks-green.png',
           altText: 'A pair of socks',
+          inventory: 11,
+          onSale: true
         }
       })
     </script>
