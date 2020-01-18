@@ -16,6 +16,11 @@
           <ul>
             <li v-for='detail in details'>{{detail}}</li>
           </ul>
+          <ul>
+            <li v-for='variant in variants'>
+              <p @mouseover='updateProductImage(variant.variantImage)'>{{variant.variantColor}}</p>
+            </li>
+          </ul>
           <ul class='sizes'>
             <li v-for='size in sizes'>{{size}}</li>
           </ul>
@@ -23,6 +28,12 @@
           <p v-else-if='inventory>0'>Almost Out of Stock</p>
           <p v-else>Out of Stock</p>
         </div>
+        <div class='cart'>
+          <button @click="updateCart(-1)">-</button>
+          <p>Cart:{{cart}}</p>
+          <button @click ='updateCart(+1)'>+</button>
+        </div>
+      </div>
     </div>
     <script src = 'https://cdn.jsdelivr.net/npm/vue'></script>
     <script>
@@ -36,7 +47,30 @@
           inventory: 11,
           onSale: true,
           details: ['80% cotton','20% polyester', '100% nerd', 'Gender-neutral'],
-          sizes: ['S','M','L']
+          sizes: ['S','M','L'],
+          variants: [
+            {
+              variantId: 2234,
+              variantColor: 'green',
+              variantImage: 'assets/vmSocks-green.png'
+            },
+            {
+              variantId: 2235,
+              variantColor: 'blue',
+              variantImage: 'assets/vmSocks-blue.png'
+            }
+          ],
+          cart:0
+        },
+        methods:{
+          updateProductImage(img){
+            this.image = img
+          },
+          updateCart(value){
+            this.cart+=value
+            if(this.cart <0)
+              this.cart = 0
+          }
         }
       })
     </script>
